@@ -1,0 +1,55 @@
+## 
+#  Written By Setkeh setkeh <AT> gmail <DOT> com
+#  Please Feel free to use this script modify and redistribute it,
+#  but please leave a comment back to me :)
+##
+
+## 
+#  How To Use This Script
+#  Depends = Xmessage, xclip, dropbox.
+#  1. Replace DIR=* with the path to your dropbox
+#  public screenshots folder.
+#  2. Open your dropbox account from dropbox.com
+#  and open the screenshot folder and copy the link 
+#  and replace HTTP_URL with you link (WITH NO TRAILING /)
+#  3. Enjoy :)
+#  ANY COMMENTS OR SUGGESTIONS AND FEEDBACK WELCOME
+#  JOIN #linuxdistrocommunity ON FREENODE AND HILIGHT setkeh
+## 
+
+
+DIR="${HOME}/Dropbox/Public/screenshots"
+HTTP_URL="http://dl.dropbox.com/u/38558063/screenshots"
+
+###################################
+#                                 #  
+# DONOT EDIT PAST HERE UNLESS YOU #
+#      KNOW WHAT YOUR DOING       #
+#                                 #
+###################################
+
+DATE="$(date +%m.%d.%y-%H.%M.%S)"
+SHORT_NAME="screenshot-${DATE}.png"
+NAME="${DIR}/${SHORT_NAME}"
+URL="${HTTP_URL}/${SHORT_NAME}"
+LOG="${DIR}/screenshots.log"
+
+# Create The Directory If it Doesent Exist
+if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi 
+
+# Select A Window Border With the Mouse
+if [ "$1" = "win" ]; then scrot -sb "${NAME}"; fi
+
+# Take Screenshot of entire Screen 
+if [ "$1" = "scr" ]; then scrot "${NAME}"; fi
+
+# MultiHead Display Support (1 Shot each Screen)
+if [ "$1" = "area" ]; then scrot -m "${NAME}"; fi
+
+# Create the logfile for Screenshot names
+echo "${NAME}" >> "${LOG}"
+
+# Use Xmessage to output url for terminal support and xclip for clipbord support
+echo -n "${URL}" | xclip -selection c
+
+xmessage -nearmouse "${URL}" &
