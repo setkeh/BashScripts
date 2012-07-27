@@ -13,10 +13,10 @@ DropBox_Screens Usage
 ---------------------
 dropbox_screens <args>
         
---        --help =    Show this Help.
---        Win    =    Select A Window Border With the Mouse.
---	  scr    =    Take Screenshot of Entire Screen.
---	  area   =    MultiHead Display Support (1 Shot each Screen).
+       ` --help =    Show this Help.`
+       ` Win    =    Select A Window Border With the Mouse.`
+       ` scr    =    Take Screenshot of Entire Screen.`
+       ` area   =    MultiHead Display Support (1 Shot each Screen).`
 
 LICENCE
 -------
