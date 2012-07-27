@@ -22,7 +22,7 @@ LICENCE
 -------
 
 All Scripts in this repository are open source
-Please leave any comments links and references 
+Please leave any comments, Attributes, links and references 
 attached to the files if you plan to modify them
 and redistribute them.
 
