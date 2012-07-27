@@ -34,6 +34,16 @@ NAME="${DIR}/${SHORT_NAME}"
 URL="${HTTP_URL}/${SHORT_NAME}"
 LOG="${DIR}/screenshots.log"
 
+# --Help Info
+if [ "$1" = "--help" ]; then echo "
+Usage <dropbox_screens args>
+	
+	Win  = Select A Window Border With the Mouse.
+	scr  = Take Screenshot of Entire Screen.
+	area = MultiHead Display Support (1 Shot each Screen)
+"; exit
+fi
+ 
 # Create The Directory If it Doesent Exist
 if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi 
 
