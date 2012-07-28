@@ -6,8 +6,19 @@ My Personal Collection of Hand Written BashScripts
 CHANGES
 -------
 
-1. Added Upload_Dropbox
-2. Added Upload_Screens 
+28-jul-12: Added Upload_Dropbox
+28-jul-12: Added Upload_Screens
+29-jul-12: Optimised Dropbox Code, Fixed --help Issues, Disabled "win" Due to known issues.
+
+TODO
+----
+
+1. Append changes from 29-jul-12 Dropbox_screens to ftp_screens.
+
+Known Issues
+------------
+
+1. The "win" arg has Timing issues. Temporary Solution = Now Disabled By Default Untill Timing Fixed. 
 
 DropBox_Screens Usage
 ---------------------

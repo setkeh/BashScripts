@@ -23,8 +23,7 @@ HTTP_URL="http://dl.dropbox.com/u/38558063/screenshots"
 
 ###################################
 #                                 #  
-# DONOT EDIT PAST HERE UNLESS YOU #
-#      KNOW WHAT YOUR DOING       #
+#   DONOT EDIT PAST THIS POINT    #
 #                                 #
 ###################################
 
@@ -35,31 +34,29 @@ URL="${HTTP_URL}/${SHORT_NAME}"
 LOG="${DIR}/screenshots.log"
 
 # --Help Info
-if [ "$1" = "--help" ]; then echo "
-Usage <dropbox_screens args>
-	
+HELP="Usage <dropbox_screens args>
 	Win  = Select A Window Border With the Mouse.
 	scr  = Take Screenshot of Entire Screen.
-	area = MultiHead Display Support (1 Shot each Screen)
-"; exit
-fi
+	area = MultiHead Display Support (1 Shot each Screen)"
  
 # Create The Directory If it Doesent Exist
 if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi 
 
-# Select A Window Border With the Mouse
-if [ "$1" = "win" ]; then scrot -sb "${NAME}"; fi
+# Help Docs
+if [ "$1" = "--help" ]; then echo "${HELP}"; fi
+
+# Select A Window Border With the Mouse (DISABLED BY DEFAULT UNTILL SLEEP ISSUE CORRECTED)
+#if [ "$1" = "win" ]; then scrot -sb "${NAME}" & sleep 15 xmessage "$URL"; fi
 
 # Take Screenshot of entire Screen 
-if [ "$1" = "scr" ]; then scrot "${NAME}"; fi
+if [ "$1" = "scr" ]; then scrot "${NAME}" & xmessage -nearmouse "$URL"; fi
 
 # MultiHead Display Support (1 Shot each Screen)
-if [ "$1" = "area" ]; then scrot -m "${NAME}"; fi
+if [ "$1" = "area" ]; then scrot -m "${NAME}" & xmessage -nearmouse "$URL"; fi
+
+# READ THE HELP DOCS
+if [ "$1" = "" ]; then echo "No Arguments Supplied. 
+$HELP"; fi
 
 # Create the logfile for Screenshot names
 echo "${NAME}" >> "${LOG}"
-
-# Use Xmessage to output url for terminal support and xclip for clipbord support
-echo -n "${URL}" | xclip -selection c
-
-xmessage -nearmouse "${URL}" &
