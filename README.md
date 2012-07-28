@@ -6,9 +6,11 @@ My Personal Collection of Hand Written BashScripts
 CHANGES
 -------
 
-28-jul-12: Added Upload_Dropbox
-28-jul-12: Added Upload_Screens
-29-jul-12: Optimised Dropbox Code, Fixed --help Issues, Disabled "win" Due to known issues.
+	28-jul-12: Added Upload_Dropbox
+
+	28-jul-12: Added Upload_Screens
+
+	29-jul-12: Optimised Dropbox Code, Fixed --help Issues, Disabled "win" Due to known issues.
 
 TODO
 ----
