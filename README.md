@@ -44,7 +44,7 @@ And so you know that the script has done its work you will be presented with a
 DBUS notify-send popup.
 
 Please Remember that Dropbox can sometime take a fe minutes to sync (Depending on your connection)
-so if you imidiatly try the link and get a 404 error THIS IS NOT A BUG just try again in a few minutes
+so if you imidiatly try the link and get a 404 error THIS IS NOT A BUG just try the link again in a few minutes
 and make sure you have your dropbox daemon running.
 
 FTP Usage
