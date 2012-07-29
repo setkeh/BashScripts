@@ -11,19 +11,22 @@ CHANGES
 	28-jul-12: Added Upload_Screens
 
 	29-jul-12: Optimised Dropbox Code, Fixed --help Issues, Disabled "win" Due to known issues.
+	
+	29-jul-12: Appended Dropbox Changes to ftp script, Fixed "win" Timing Issue Now Re-enabled.
 
 TODO
 ----
 
-1. Append changes from 29-jul-12 Dropbox_screens to ftp_screens.
+1. None As Yet.
 
 Known Issues
 ------------
 
-1. The "win" arg has Timing issues. Temporary Solution = Now Disabled By Default Untill Timing Fixed. 
+1. None As Yet. 
 
-DropBox_Screens Usage
----------------------
+
+Usage
+-----
 dropbox_screens <args>
         
        ` --help =    Show this Help.`

@@ -18,13 +18,12 @@
 
  
 DIR="${HOME}/screenshots"
-HTTP_URL="http://screenshots.yourserver.com"
-FTP_URL="ftp://user:pass@host/screenshot"
+HTTP_URL="http://screenshots.your.server.com"
+FTP_URL="ftp://user:passwird@host/screenshot"
 
 ####################################
 #                                  #  
-#  DONOT EDIT PAST HERE UNLESS YOU #
-#       KNOW WHAT YOUR DOING       #
+#    DONOT EDIT PAST THIS POINT    #
 #                                  #
 ####################################
 
@@ -34,31 +33,45 @@ SHORT_NAME="screenshot-${DATE}.png"
 NAME="${DIR}/${SHORT_NAME}"
 URL="${HTTP_URL}/${SHORT_NAME}"
 # --Help Info
-if [ "$1" = "--help" ]; then echo "
-Usage <ftp_screens args>
-
- 	win  = Select A Window Border With the Mouse.
+HELP="Usage <dropbox_screens args>
+ 	Win  = Select A Window Border With the Mouse.
 	scr  = Take Screenshot of Entire Screen.
-	area = MultiHead Display Support (1 Shot each Screen)
- 			"; exit
- 			fi
+	area = MultiHead Display Support (1 Shot each Screen)"
+
 # Create the Directory If it Doesent Exist
 if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi 
 
 # Select A Window Border With the Mouse
-if [ "$1" = "win" ]; then scrot -sb "${NAME}"; fi
+if [ "$1" = "win" ]; then 
+	scrot -sb "${NAME}"
+	echo "Uploading ${URL}"
+	wput -m 644 -u "${NAME}" "${FTP_URL}/${SHORT_NAME}"
+	echo -n "${URL}" | xclip -selection c
+	xmessage -nearmouse "${URL}";
+fi
 
 # Take Screenshot of entire Screen
-if [ "$1" = "scr" ]; then scrot "${NAME}"; fi
+if [ "$1" = "scr" ]; then 
+	scrot "${NAME}"
+	echo "Uploading ${URL}"
+	wput -m 644 -u "${NAME}" "${FTP_URL}/${SHORT_NAME}"
+	echo -n "${URL}" | xclip -selection c
+	xmessage -nearmouse "${URL}";
+fi
 
 # MultiHead Display Support (1 Shot each Screen)
-if [ "$1" = "area" ]; then scrot -m "${NAME}"; fi
+if [ "$1" = "area" ]; then 
+	scrot -m "${NAME}"
+	echo "Uploading ${URL}"
+	wput -m 644 -u "${NAME}" "${FTP_URL}/${SHORT_NAME}"
+	echo -n "${URL}" | xclip -selection c
+	xmessage -nearmouse "${URL}";
+fi
 
 # Create the logfile for Screenshot names
 echo "${NAME}" >> "${LOG}"
 
-echo "Uploading ${URL}"
-wput -m 644 -u "${NAME}" "${FTP_URL}/${SHORT_NAME}"
-echo -n "${URL}" | xclip -selection c
-
-xmessage -nearmouse "${URL}" &
+#DISPLAY HELP DOCS
+if [ "$1" = "--help" ]; then echo "${HELP}"; fi
+if [ "$1" = "" ]; then echo "No Arguments Supplied. 
+$HELP"; fi

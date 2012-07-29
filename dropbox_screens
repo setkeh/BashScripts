@@ -45,14 +45,23 @@ if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi
 # Help Docs
 if [ "$1" = "--help" ]; then echo "${HELP}"; fi
 
-# Select A Window Border With the Mouse (DISABLED BY DEFAULT UNTILL SLEEP ISSUE CORRECTED)
-#if [ "$1" = "win" ]; then scrot -sb "${NAME}" & sleep 15 xmessage "$URL"; fi
+# Select A Window Border With the Mouse.
+if [ "$1" = "win" ]; then 
+	scrot -sb "${NAME}" 
+	xmessage "$URL"; 
+fi
 
 # Take Screenshot of entire Screen 
-if [ "$1" = "scr" ]; then scrot "${NAME}" & xmessage -nearmouse "$URL"; fi
+if [ "$1" = "scr" ]; then 
+	scrot "${NAME}"
+	xmessage -nearmouse "$URL"; 
+fi
 
 # MultiHead Display Support (1 Shot each Screen)
-if [ "$1" = "area" ]; then scrot -m "${NAME}" & xmessage -nearmouse "$URL"; fi
+if [ "$1" = "area" ]; then 
+	scrot -m "${NAME}"
+	xmessage -nearmouse "$URL"; 
+fi
 
 # READ THE HELP DOCS
 if [ "$1" = "" ]; then echo "No Arguments Supplied. 
