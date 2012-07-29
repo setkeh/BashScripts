@@ -48,19 +48,27 @@ if [ "$1" = "--help" ]; then echo "${HELP}"; fi
 # Select A Window Border With the Mouse.
 if [ "$1" = "win" ]; then 
 	scrot -sb "${NAME}" 
-	xmessage "$URL"; 
+	#xmessage "$URL" ##Depricated Due to clunky and annoying
+	echo -n "$URL" | xclip -i -selection primary -selection c
+	notify-send -t 15000 "DROPBOX_SCREENS" "Image Posted Succesfully Using the 'win' Argument\n$URL";
+  
 fi
 
 # Take Screenshot of entire Screen 
 if [ "$1" = "scr" ]; then 
 	scrot "${NAME}"
-	xmessage -nearmouse "$URL"; 
+	#xmessage -nearmouse "$URL";  ##Depricated Due to clunky and annoying
+	echo -n "$URL" | xclip -i -selection primary -selection c
+	notify-send -t 15000 "DROPBOX_SCREENS" "Image Posted Succesfully Using the 'scr' Argument\n$URL";
+		
 fi
 
 # MultiHead Display Support (1 Shot each Screen)
 if [ "$1" = "area" ]; then 
 	scrot -m "${NAME}"
-	xmessage -nearmouse "$URL"; 
+	#xmessage -nearmouse "$URL"  ##Depricated Due to clunky and annoying
+	echo -n "$URL" | xclip -i -selection primary -selection c
+	notify-send -t 15000 "DROPBOX_SCREENS" "Image Posted Succesfully Using the 'area' Argument\n$URL";
 fi
 
 # READ THE HELP DOCS
