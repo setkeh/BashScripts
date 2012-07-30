@@ -14,12 +14,12 @@ CHANGES
 	
 	29-jul-12: Appended Dropbox Changes to ftp script, Fixed "win" Timing Issue Now Re-enabled.
 	
-	29-jul-12: Depricated xmessage In favor of copying links to "xclip primary" and "xclip clipboard"
-
+	29-jul-12: Depricated xmessage In favor of copying links to "xclip primary" and "xclip clipboard.
+	
 TODO
 ----
 
-1. Depricate Xmessage from ftp_screens and update it to current method in dropbox_screens.
+1. None as Yet.
 
 Known Issues
 ------------
