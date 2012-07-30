@@ -56,6 +56,13 @@ ftp_screens <args>
        ` scr    =    Take Screenshot of Entire Screen.`
        ` area   =    MultiHead Display Support (1 Shot each Screen).`
 
+ftp_screens No Longer uses xmessage to display links. 
+Instead links are copied into Pirmary and Clipboard.
+To Use the Links you can either right click and paste "This is the Clipboard" OR
+You and Middle Mouse Click (Also Bound to "shift + ins") "This is Primary.
+And so you know that the script has done its work you will be presented with a
+DBUS notify-send popup.
+
 LICENCE
 -------
 
