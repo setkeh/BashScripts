@@ -47,6 +47,8 @@ Please Remember that Dropbox can sometime take a fe minutes to sync (Depending o
 so if you imidiatly try the link and get a 404 error THIS IS NOT A BUG just try the link again in a few minutes
 and make sure you have your dropbox daemon running.
 
+PLEASE SUPPORT ME BY SIGNING UP TO DROPBOX IF YOU HAVENT ALREADY BY USING MY REFERENCE LINK :) http://db.tt/FR4hBVWq YOU WILL ALSO GET EXTRA SPACE IF YOU SIGN UP USING THIS LINK.
+
 FTP Usage
 ---------
 ftp_screens <args>
