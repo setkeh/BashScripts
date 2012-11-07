@@ -16,6 +16,8 @@ CHANGES
 	
 	29-jul-12: Depricated xmessage In favor of copying links to "xclip primary" and "xclip clipboard.
 	
+	07-Nov-12: Added Rsync_screens for posting screenshot to a server via rsync
+	
 TODO
 ----
 

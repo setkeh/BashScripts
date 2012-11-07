@@ -1,0 +1,80 @@
+## 
+#  Written By Setkeh setkeh <AT> gmail <DOT> com
+#  Please Feel free to use this script modify and redistribute it,
+#  but please leave a comment back to me :)
+##
+
+### 
+#  How To Use This Script
+#  Depends = Xmessage, xclip, wput.
+#  1. Replace DIR=* with the path you want your screenshots folder.
+#  2. Change the HTTP URL to the public folder on your FTP server. 
+#     (If you have it configured correctly WITH NO TRAILING /)
+#  3. Change the USER:PASS@IP To the information of your FTP Server.
+#  4. ENJOY :)
+#  ANY COMMENTS OR SUGGESTIONS AND FEEDBACK WELCOME
+#  JOIN #linuxdistrocommunity ON FREENODE AND HILIGHT setkeh
+###
+
+ 
+DIR="${HOME}/screenshots"
+HTTP_URL="http://screenshots.your.server.com"
+RSYNC_URL="rsync://your.server.here"
+
+####################################
+#                                  #  
+#    DONOT EDIT PAST THIS POINT    #
+#                                  #
+####################################
+
+LOG="${DIR}/screenshots.log"
+DATE="$(date +%m.%d.%y-%H.%M.%S)"
+SHORT_NAME="screenshot-${DATE}.png"
+NAME="${DIR}/${SHORT_NAME}"
+URL="${HTTP_URL}/${SHORT_NAME}"
+# --Help Info
+HELP="Usage <rsync_screens args>
+ 	Win  = Select A Window Border With the Mouse.
+	scr  = Take Screenshot of Entire Screen.
+	area = MultiHead Display Support (1 Shot each Screen)"
+
+# Create the Directory If it Doesent Exist
+if [ ! -d "${DIR}" ]; then mkdir "${DIR}"; fi 
+
+# Select A Window Border With the Mouse
+if [ "$1" = "win" ]; then 
+	scrot -sb "${NAME}"
+	echo "Uploading ${URL}"
+	rsync "${NAME}" "${RSYNC_URL}/${SHORT_NAME}"
+	#xmessage -nearmouse "${URL}";
+	echo -n "$URL" | xclip -i -selection primary -selection c
+	notify-send -t 15000 "RSYNC_SCREENS" "Image Posted Succesfully Using the 'win' Argument\n$URL";
+fi
+
+# Take Screenshot of entire Screen
+if [ "$1" = "scr" ]; then 
+	scrot "${NAME}"
+	echo "Uploading ${URL}"
+	rsync "${NAME}" "${RSYNC_URL}/${SHORT_NAME}"
+	#xmessage -nearmouse "${URL}";
+	echo -n "$URL" | xclip -i -selection primary -selection c
+	notify-send -t 15000 "RSYNC_SCREENS" "Image Posted Succesfully Using the 'scr' Argument\n$URL";
+fi
+
+# MultiHead Display Support (1 Shot each Screen)
+if [ "$1" = "area" ]; then 
+	scrot -m "${NAME}"
+	echo "Uploading ${URL}"
+	rsync"${NAME}" "${RSYNC_URL}/${SHORT_NAME}"
+	#xmessage -nearmouse "${URL}";
+	echo -n "$URL" | xclip -i -selection primary -selection c
+	notify-send -t 15000 "RSYNC_SCREENS" "Image Posted Succesfully Using the 'area' Argument\n$URL";
+fi
+
+# Create the logfile for Screenshot names
+echo "${NAME}" >> "${LOG}"
+
+#DISPLAY HELP DOCS
+if [ "$1" = "--help" ]; then echo "${HELP}"; fi
+if [ "$1" = "" ]; then echo "No Arguments Supplied. 
+$HELP"; fi
